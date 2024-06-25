@@ -1,4 +1,5 @@
 from app.repository.to_do_list_repository import ToDoListRepository, to_do_list_repository
+from app.repository.repository import RepositoryInterface
 from app.models.user import User
 from app.models.to_do_list import ToDoList
 from app.repository.exceptions import ModelNotFoundException
@@ -6,7 +7,7 @@ from app.models.to_do_item import ToDoItem
 
 
 class ToDoListService:
-    def __init__(self, repository: ToDoListRepository):
+    def __init__(self, repository: RepositoryInterface[ToDoList]):
         self.repository = repository
 
     def get_list(self, user: User) -> ToDoList:
