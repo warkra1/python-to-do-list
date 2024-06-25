@@ -7,13 +7,6 @@ from .exceptions import ModelNotFoundException
 
 
 class UserRepository(AbstractRepository[User], ABC):
-    def exists(self, login: str) -> bool:
-        try:
-            self.read(login)
-            return True
-        except ModelNotFoundException:
-            return False
-
     def unserialize(self, data: dict) -> User:
         return User(data['login'], data['password'])
 
